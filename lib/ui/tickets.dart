@@ -51,7 +51,7 @@ class _TicketsState extends State<Tickets> {
     return Scaffold(
       appBar: AppBar(
           leading: Container(),
-          backgroundColor: primaryAppColor,
+          backgroundColor: blueAppColor,
           bottom: PreferredSize(
             preferredSize: Size.square(20),
             child: Container(
@@ -67,7 +67,7 @@ class _TicketsState extends State<Tickets> {
                         child: Text(
                           "Your Tickets",
                           style: TextStyle(
-                            color: blackColor,
+                            color: primaryAppColor,
                             fontSize: 25,
                           ),
                         )),
@@ -77,7 +77,7 @@ class _TicketsState extends State<Tickets> {
                     children: [
                       Text(
                         "${ticketsList.length}",
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(fontSize: 25,color: primaryAppColor),
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 10, left: 20),
@@ -85,7 +85,7 @@ class _TicketsState extends State<Tickets> {
                           alignment: Alignment.centerRight,
                           child: SvgPicture.asset(
                             "images/ticket.svg",
-                            color: Colors.black,
+                            color: primaryAppColor,
                             width: 12,
                             height: 40,
                           ),
@@ -100,13 +100,13 @@ class _TicketsState extends State<Tickets> {
               ),
             ),
           )),
-      backgroundColor: primaryAppColor,
+      backgroundColor: blueAppColor,
       body: SafeArea(
         child: ticketsList.length == 0
             ? Center(
                 child: Text(
                   "You have no tickets.",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20,color: primaryAppColor),
                 ),
               )
             : Container(
@@ -123,6 +123,7 @@ class _TicketsState extends State<Tickets> {
                               child: Image.asset(
                                 "images/ticket_sample1.png",
                                 height: 130,
+                                color: primaryAppColor,
                               ),
                             ),
                             Container(
@@ -131,7 +132,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${userId}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -139,7 +140,7 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: SvgPicture.asset(
                                 "images/train.svg",
-                                color: primaryAppColor,
+                                color: blueAppColor,
                                 height: 30,
                               ),
                             ),
@@ -149,7 +150,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${ticketsList[index].tripData.price} EGP",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -158,7 +159,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${ticketsList[index].tripData.trip.baseStation.name.toString()}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -167,7 +168,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${ticketsList[index].tripData.trip.destinationStation.name}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -175,7 +176,7 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Icon(
                                 Icons.airline_seat_recline_normal_sharp,
-                                color: whiteColor,
+                                color: blueAppColor,
                               ),
                             ),
                             Container(
@@ -184,7 +185,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "Class ${ticketsList[index].tripData.Class}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -193,7 +194,7 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${ticketsList[index].tripData.trip.departTime.split(":")[0] + ":" + ticketsList[index].tripData.trip.departTime.split(":")[1]}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                             Container(
@@ -202,16 +203,18 @@ class _TicketsState extends State<Tickets> {
                               child: Text(
                                 "${ticketsList[index].tripData.trip.arrivalTime.split(":")[0] + ":" + ticketsList[index].tripData.trip.arrivalTime.split(":")[1]}",
                                 style: TextStyle(
-                                    fontSize: 15, color: Colors.white),
+                                    fontSize: 15, color: blueAppColor),
                               ),
                             ),
                           ],
                         ),
-
-                        Text("${ticketsList[index].ticketTime.split(".")[0].split("T")}"),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10),
+                          child: Text("${ticketsList[index].ticketTime.split(".")[0].split("T")}",style: TextStyle(color: primaryAppColor),),
+                        ),
                         Divider(
                           thickness: 0,
-                          color: blackColor,
+                          color: primaryAppColor,
                         )
                       ],
                     );

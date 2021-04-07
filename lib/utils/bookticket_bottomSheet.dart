@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:railway/models/trips.dart';
 import 'package:railway/ui/book_ticket.dart';
+import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
 import 'package:railway/utils/navigator.dart';
 
@@ -55,7 +56,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
               ),
               Text(
                 "Details",
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 20,color: primaryAppColor),
               ),
               SizedBox(
                 height: 20,
@@ -65,7 +66,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                 children: [
                   Text(
                     "- Station :",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -75,15 +76,15 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         widget.success.baseStation.name,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                       Text(
                         "To",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                       Text(
                         widget.success.destinationStation.name,
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -92,7 +93,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                   ),
                   Text(
                     "- Time :",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -102,15 +103,15 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         widget.success.departTime,
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 15,color: primaryAppColor),
                       ),
                       Text(
                         "To",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                       Text(
                         widget.success.arrivalTime,
-                        style: TextStyle(fontSize: 15),
+                        style: TextStyle(fontSize: 15,color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -121,14 +122,14 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         "- Trip Seats :",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "${widget.success.seats.length}",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -139,14 +140,14 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         "- Available Seats :",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "${counter()}",
-                        style: TextStyle(fontSize: 20),
+                        style: TextStyle(fontSize: 20,color: primaryAppColor),
                       ),
                     ],
                   ),

@@ -11,12 +11,12 @@ class HomePage extends StatefulWidget {
   int currentIndex;
 
   HomePage({this.currentIndex = 0});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   Widget build(BuildContext context) {
     final items = [
@@ -55,6 +55,13 @@ class _HomePageState extends State<HomePage> {
           height: 70,
           width: MediaQuery.of(context).size.width / 4,
           decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey,
+                blurRadius: 10.0,
+                offset: Offset(50.0, 10.0),
+              )
+            ],
             border: Border(
               bottom: BorderSide(
                 width: 4,
@@ -63,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     : Colors.transparent,
               ),
             ),
-            color: blackColor,
+            color: Color(0xff173059),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -89,8 +96,9 @@ class _HomePageState extends State<HomePage> {
               Text(
                 name,
                 style: TextStyle(
-                    color:
-                        index == widget.currentIndex ? primaryAppColor : Colors.grey),
+                    color: index == widget.currentIndex
+                        ? primaryAppColor
+                        : Colors.grey),
               )
             ],
           )),

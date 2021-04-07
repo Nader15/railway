@@ -32,10 +32,11 @@ class _BookTicketState extends State<BookTicket> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: blueAppColor,
       key: scafoldState,
       appBar: AppBar(
           leading: Container(),
-          backgroundColor: primaryAppColor,
+          backgroundColor: blueAppColor,
           bottom: PreferredSize(
             preferredSize: Size.square(20),
             child: Container(
@@ -51,7 +52,7 @@ class _BookTicketState extends State<BookTicket> {
                         child: Text(
                           "Book A Ticket",
                           style: TextStyle(
-                            color: blackColor,
+                            color: primaryAppColor,
                             fontSize: 25,
                           ),
                         )),
@@ -62,7 +63,7 @@ class _BookTicketState extends State<BookTicket> {
                       alignment: Alignment.centerRight,
                       child: SvgPicture.asset(
                         "images/ticket.svg",
-                        color: Colors.black,
+                        color: primaryAppColor,
                         width: 12,
                         height: 35,
                       ),
@@ -89,97 +90,70 @@ class _BookTicketState extends State<BookTicket> {
                 children: [
                   Text(
                     "- Station :",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        widget.success.baseStation.name,
-                        style: TextStyle(fontSize: 20),
+                  Card(
+                    margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                    elevation: 1,
+                    child:  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            widget.success.baseStation.name,
+                            style: TextStyle(fontSize: 20,color: blackColor),
+                          ),
+                          Icon(Icons.arrow_forward),
+                          Text(
+                            widget.success.destinationStation.name,
+                            style: TextStyle(fontSize: 20,color: blackColor),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "To",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        widget.success.destinationStation.name,
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
+                    ),
                   ),
                   SizedBox(
                     height: 40,
                   ),
                   Text(
                     "- Time :",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        widget.success.departTime,
-                        style: TextStyle(fontSize: 15),
+                  Card(
+                    margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                    elevation: 1,
+                    child:  Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            widget.success.departTime,
+                            style: TextStyle(fontSize: 15,color: blackColor),
+                          ),
+                         Icon(Icons.arrow_forward),
+                          Text(
+                            widget.success.arrivalTime,
+                            style: TextStyle(fontSize: 15,color: blackColor),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "To",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      Text(
-                        widget.success.arrivalTime,
-                        style: TextStyle(fontSize: 15),
-                      ),
-                    ],
+                    ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "- Trip Seats :",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "${widget.success.seats.length}",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 30,
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "- Available Seats :",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        "${counter()}",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
+
                   SizedBox(
                     height: 20,
                   ),
                   Text(
                     "- Choose Seat :",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -224,19 +198,58 @@ class _BookTicketState extends State<BookTicket> {
                     ),
                   ),
                   SizedBox(
+                    height: 30,
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            "Available Seats :",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "${counter()}",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Trip Seats :",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "${widget.success.seats.length}",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(
                     height: 20,
                   ),
                 ],
               ),
-              SizedBox(
-                height: 50,
-              ),
-              CustomButton(
-                  bttnName: "Book",
-                  bttnHeight: 55,
-                  bttnWidth: 368,
-                  bttnNameSize: 18,
-                  onPress: () {}),
+              // SizedBox(
+              //   height: 50,
+              // ),
+              // CustomButton(
+              //     bttnName: "Book",
+              //     bttnHeight: 55,
+              //     bttnWidth: 368,
+              //     bttnNameSize: 18,
+              //     onPress: () {}),
               SizedBox(
                 height: 20,
               ),

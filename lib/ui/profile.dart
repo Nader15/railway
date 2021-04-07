@@ -7,18 +7,13 @@ class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: primaryAppColor,
+        backgroundColor: blueAppColor,
         appBar: AppBar(
-          leading: IconButton(
-            onPressed: (){},
-            icon: Icon(Icons.arrow_back_outlined,color: blackColor,),
-          ),
           title: Text(
             "Welcome ${userName}",
-            style: TextStyle(color: blackColor),
+            style: TextStyle(color: primaryAppColor),
           ),
-          centerTitle: true,
-          backgroundColor: primaryAppColor,
+          backgroundColor: blueAppColor,
         ),
         floatingActionButton: _buildFloatingButton(),
         body: SingleChildScrollView(
@@ -40,17 +35,17 @@ class Profile extends StatelessWidget {
                     new Container(
                       height: 100,
                       width: 400,
-                      padding: EdgeInsets.all(16.0),
+                      padding: EdgeInsets.only(top: 0,left: 15),
                       margin: EdgeInsets.only(top: 16.0),
                       decoration: BoxDecoration(
-                          color:whiteColor,
+                          color:primaryAppColor,
                           borderRadius: BorderRadius.circular(5.0)),
                       child: Container(
                         margin: EdgeInsets.only(left: 50.0),
                         child: ListTile(
                           contentPadding: EdgeInsets.only(left: 50.0),
                           title: Text("${userName}",
-                              style: Theme.of(context).textTheme.title),
+                              style: TextStyle(color: blueAppColor,fontSize: 20)),
                         ),
                       ),
                     )
@@ -63,7 +58,7 @@ class Profile extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: primaryAppColor,
+                  color: blueAppColor,
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: SvgPicture.asset(
@@ -101,27 +96,27 @@ class Profile extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.only(left: 10,top: 15),
-                      child: Text('Client Information'),
+                      child: Text('Client Information',style: TextStyle(color: blackColor),),
                     ),
                     Divider(),
                     ListTile(
-                      leading: Icon(Icons.email, color: primaryAppColor),
-                      title: Text('Email'),
+                      leading: Icon(Icons.email, color: blueAppColor),
+                      title: Text('Email',style: TextStyle(color: blueAppColor)),
                       subtitle: Text("${userEmail}"),
                     ),
                     ListTile(
-                      leading: Icon(Icons.phone, color: primaryAppColor),
-                      title: Text('Phone'),
+                      leading: Icon(Icons.phone, color: blueAppColor),
+                      title: Text('Phone',style: TextStyle(color: blueAppColor)),
                       subtitle: Text('+20-' "${userPhone}"),
                     ),
                     ListTile(
-                      leading: Icon(Icons.home, color: primaryAppColor),
-                      title: Text('Wallet'),
+                      leading: Icon(Icons.home, color: blueAppColor),
+                      title: Text('Wallet',style: TextStyle(color: blueAppColor)),
                       subtitle: Text("-----"),
                     ),
                     ListTile(
-                      leading: Icon(Icons.date_range, color: primaryAppColor),
-                      title: Text('Joined date'),
+                      leading: Icon(Icons.date_range, color: blueAppColor),
+                      title: Text('Joined date',style: TextStyle(color: blueAppColor)),
                       subtitle: Text('${userJoinedTime.split("T")[0]}'),
                     ),
                   ],
@@ -139,7 +134,7 @@ class Profile extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         ListTile(
-                          title: Text('Favourite Stations',style: TextStyle(fontWeight: FontWeight.bold),),
+                          title: Text('Favourite Stations',style: TextStyle(fontWeight: FontWeight.bold,color: primaryAppColor),),
                           trailing: Icon(Icons.favorite,color: redColor,),
                         )
                       ],
@@ -172,13 +167,13 @@ class Profile extends StatelessWidget {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(location,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text(location,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: blueAppColor),),
               SvgPicture.asset(
                 "images/train.svg",
-                color: blackColor,
+                color: blueAppColor,
                 height: 30,
               ),
-              Text(destination,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text(destination,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: blueAppColor),),
             ],
           ),
         ),
@@ -189,7 +184,7 @@ class Profile extends StatelessWidget {
   Widget _buildFloatingButton() {
     return RaisedButton(
       onPressed: () {},
-      color: blackColor,
+      color: blueAppColor,
       elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),

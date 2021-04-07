@@ -70,7 +70,7 @@ class _TripsState extends State<Trips> {
       appBar: AppBar(
           elevation: 0,
           leading: Container(),
-          backgroundColor: primaryAppColor,
+          backgroundColor: blueAppColor,
           bottom: PreferredSize(
             preferredSize: Size.square(60),
             child: Container(
@@ -86,7 +86,7 @@ class _TripsState extends State<Trips> {
                             child: Text(
                               "Daily Railway Trips",
                               style: TextStyle(
-                                color: blackColor,
+                                color: primaryAppColor,
                                 fontSize: 25,
                               ),
                             )),
@@ -98,7 +98,7 @@ class _TripsState extends State<Trips> {
                           alignment: Alignment.centerRight,
                           child: SvgPicture.asset(
                             "images/destination2.svg",
-                            color: Colors.black,
+                            color: primaryAppColor,
                             width: 12,
                             height: 35,
                           ),
@@ -114,6 +114,7 @@ class _TripsState extends State<Trips> {
                     child: SizedBox(
                       height: 60,
                       child: TextFormField(
+                        style: TextStyle(color: primaryAppColor),
                         onChanged: (text) {
                           setState(() {
                             text = text.toLowerCase();
@@ -124,17 +125,20 @@ class _TripsState extends State<Trips> {
                             }).toList();
                           });
                         },
-                        cursorColor: blackColor,
+                        cursorColor: primaryAppColor,
                         decoration: InputDecoration(
-                            focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: blackColor, width: .8)),
-                            hintText: "Find your destination",
+                          fillColor: primaryAppColor.withOpacity(0.1),
+                            filled: true,
+                            focusedBorder: InputBorder.none,
+                            hintText: "Find your destination ...",
+                            hintStyle: TextStyle(color: greyPrimaryColor),
                             contentPadding:
                                 EdgeInsets.symmetric(horizontal: 10),
-                            border: OutlineInputBorder(
-                                borderSide:
-                                    BorderSide(color: blackColor, width: .8))),
+                            enabledBorder: InputBorder.none,
+                            // border: OutlineInputBorder(
+                            //     borderSide:
+                            //         BorderSide(color: primaryAppColor, width: .8)),
+                        ),
                       ),
                     ),
                   )
@@ -143,14 +147,14 @@ class _TripsState extends State<Trips> {
             ),
           )),
       key: _scaffoldKey,
-      backgroundColor: primaryAppColor,
+      backgroundColor: blueAppColor,
       body: SafeArea(
         child: tripsList.length == 0
             ? Container(
                 alignment: Alignment.center,
                 child: Text(
                   "No Trips Founded",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 20,color: primaryAppColor),
                 ))
             : Container(
                 width: MediaQuery.of(context).size.width,
@@ -188,7 +192,7 @@ class _TripsState extends State<Trips> {
             context: context,
             radius: 30.0,
             // This is the default
-            color: Colors.white,
+            color: blueAppColor,
             // Also default
             builder: (context) => bookTicketBottomSheet(
                   success: success,

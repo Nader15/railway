@@ -46,35 +46,19 @@ class _StationsTestState extends State<StationsTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: blueAppColor,
       key: _scaffoldKey,
       appBar: AppBar(
-        leading: Container(),
-          backgroundColor: primaryAppColor,
-          bottom: PreferredSize(
-            preferredSize: Size.square(20),
-            child: Container(
-              // height: 200,
-              child: Column(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.only(right: 30, left: 20),
-                    child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          "Main Stations",
-                          style: TextStyle(
-                              color: blackColor,
-                              fontSize: 25,
-                          ),
-                        )),
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            ),
-          )),
+        title: Text('Main Station',style: TextStyle(color: primaryAppColor),),
+        centerTitle: true,
+        backgroundColor: blueAppColor,
+        leading: IconButton(
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back,color: primaryAppColor,),
+        ),
+      ),
       body: Center(
         child: Container(
           child:ListView.builder(
@@ -84,7 +68,7 @@ class _StationsTestState extends State<StationsTest> {
                 leading:  Icon(Icons.location_on,color: Colors.blue,),
                 title: Text(
                   "${stationsList[index].name}",
-                  style: TextStyle(color: blackColor, fontSize: 20,),
+                  style: TextStyle(color: primaryAppColor, fontSize: 20,),
                 ),
               );
             },

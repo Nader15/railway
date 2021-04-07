@@ -51,33 +51,38 @@ class CustomHomeDrawer extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.only(top: 0),
-              color: primaryAppColor,
+              color: blueAppColor,
               height: MediaQuery.of(context).size.height,
               child: Column(
                 children: [
                   ListTile(
-                    leading: Icon(Icons.home, color: blackColor),
+                    leading: Icon(Icons.home, color: primaryAppColor),
                     title: Text(
                       'Home Page',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: primaryAppColor),
                     ),
                     onTap: () {},
                   ),
                   ListTile(
-                      leading: Icon(Icons.person, color: blackColor),
+                      leading: Icon(Icons.person, color: primaryAppColor),
                       title: Text(
                         'My Profile',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: primaryAppColor),
                       ),
                       onTap: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => Profile()));
                       }),
                   ListTile(
-                      leading: Icon(Icons.location_on, color: blackColor),
+                      leading: Icon(Icons.location_on, color: primaryAppColor),
                       title: Text(
                         'Stations',
-                        style: TextStyle(fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: primaryAppColor),
                       ),
                       onTap: () {
                         Navigator.push(
@@ -105,20 +110,22 @@ class CustomHomeDrawer extends StatelessWidget {
                   //     }),
                   Divider(),
                   ListTile(
-                    leading: Icon(Icons.phone, color: blackColor),
+                    leading: Icon(Icons.phone, color: primaryAppColor),
                     title: Text(
                       'Contact Us',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: primaryAppColor),
                     ),
                     onTap: () {
                       launch("tel://5050");
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.settings, color: blackColor),
+                    leading: Icon(Icons.settings, color: primaryAppColor),
                     title: Text(
                       'Settings',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, color: primaryAppColor),
                     ),
                     onTap: () {
                       navigateAndKeepStack(context, Settings());
@@ -126,14 +133,14 @@ class CustomHomeDrawer extends StatelessWidget {
                   ),
                   Divider(),
                   ListTile(
-                    leading: Icon(Icons.help, color: blackColor),
+                    leading: Icon(Icons.help, color: primaryAppColor),
                     title: new RichText(
                       text: new TextSpan(
                         children: [
                           new TextSpan(
                             text: 'Help',
                             style: new TextStyle(
-                                color: Colors.black,
+                                color: primaryAppColor,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],
@@ -145,7 +152,7 @@ class CustomHomeDrawer extends StatelessWidget {
                     leading: Icon(Icons.power_settings_new, color: Colors.red),
                     title: Text(
                       'Logout',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                      style: TextStyle(fontWeight: FontWeight.bold,color: redColor),
                     ),
                     onTap: () {
                       clearAllData().then((value) {

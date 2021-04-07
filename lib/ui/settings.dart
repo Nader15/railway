@@ -14,14 +14,16 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryAppColor,
+      backgroundColor: blueAppColor,
       appBar: AppBar(
-        title: Text('Settings',style: TextStyle(color: blackColor),),
+        title: Text('Settings',style: TextStyle(color: primaryAppColor),),
         centerTitle: true,
-        backgroundColor: primaryAppColor,
+        backgroundColor: blueAppColor,
         leading: IconButton(
-          onPressed: (){},
-          icon: Icon(Icons.arrow_back,color: blackColor,),
+          onPressed: (){
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back,color: primaryAppColor,),
         ),
       ),
       body: ListView(
@@ -29,7 +31,7 @@ class _SettingsState extends State<Settings> {
           new Container(
             margin: EdgeInsets.only(top: 20,left: 20,bottom: 10),
             child: Text('Account',style: TextStyle(
-                fontSize: 25.0,color: blackColor,
+                fontSize: 25.0,color: primaryAppColor,
             ),),
           ),
           new Card(
@@ -83,7 +85,7 @@ class _SettingsState extends State<Settings> {
           new Container(
             margin: EdgeInsets.only(top: 20,left: 20,bottom: 10),
             child: Text('Security',style: TextStyle(
-                fontSize: 25.0,color: blackColor,
+                fontSize: 25.0,color: primaryAppColor,
             ),),
           ),
           Card(
