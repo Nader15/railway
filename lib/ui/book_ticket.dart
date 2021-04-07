@@ -207,21 +207,6 @@ class _BookTicketState extends State<BookTicket> {
                       Row(
                         children: [
                           Text(
-                            "Available Seats :",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            "${counter()}",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Text(
                             "Trip Seats :",
                             style: TextStyle(fontSize: 20,color: primaryAppColor),
                           ),
@@ -230,6 +215,21 @@ class _BookTicketState extends State<BookTicket> {
                           ),
                           Text(
                             "${widget.success.seats.length}",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Text(
+                            "Available :",
+                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "${counter()}",
                             style: TextStyle(fontSize: 20,color: primaryAppColor),
                           ),
                         ],
