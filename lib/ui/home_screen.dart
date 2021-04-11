@@ -16,11 +16,27 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<Widget> sliderImages = [
     Image(
-      image: AssetImage("images/railwaySlider.png"),
+      image: AssetImage("images/slider1.jpeg"),
       fit: BoxFit.cover,
     ),
     Image(
-      image: AssetImage("images/trainGirl.jpeg"),
+      image: AssetImage("images/slider2.jpeg"),
+      fit: BoxFit.cover,
+    ),
+    Image(
+      image: AssetImage("images/slider3.jpeg"),
+      fit: BoxFit.cover,
+    ),
+    Image(
+      image: AssetImage("images/slider4.jpeg"),
+      fit: BoxFit.cover,
+    ),
+    Image(
+      image: AssetImage("images/slider5.jpeg"),
+      fit: BoxFit.cover,
+    ),
+    Image(
+      image: AssetImage("images/slider6.jpeg"),
       fit: BoxFit.cover,
     ),
   ];
