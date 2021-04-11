@@ -32,7 +32,7 @@ class _BookTicketState extends State<BookTicket> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       key: scafoldState,
       appBar: AppBar(
           leading: Container(),
@@ -90,14 +90,14 @@ class _BookTicketState extends State<BookTicket> {
                 children: [
                   Text(
                     "- Station :",
-                    style: TextStyle(fontSize: 20,color: primaryAppColor),
+                    style: TextStyle(fontSize: 20,color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Card(
                     margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
-                    elevation: 1,
+                    elevation: 10,
                     child:  Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -121,14 +121,14 @@ class _BookTicketState extends State<BookTicket> {
                   ),
                   Text(
                     "- Time :",
-                    style: TextStyle(fontSize: 20,color: primaryAppColor),
+                    style: TextStyle(fontSize: 20,color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Card(
                     margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
-                    elevation: 1,
+                    elevation: 10,
                     child:  Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
@@ -136,12 +136,12 @@ class _BookTicketState extends State<BookTicket> {
                         children: [
                           Text(
                             widget.success.departTime,
-                            style: TextStyle(fontSize: 15,color: blackColor),
+                            style: TextStyle(fontSize: 18,color: blackColor),
                           ),
                          Icon(Icons.arrow_forward),
                           Text(
                             widget.success.arrivalTime,
-                            style: TextStyle(fontSize: 15,color: blackColor),
+                            style: TextStyle(fontSize: 18,color: blackColor),
                           ),
                         ],
                       ),
@@ -153,7 +153,7 @@ class _BookTicketState extends State<BookTicket> {
                   ),
                   Text(
                     "- Choose Seat :",
-                    style: TextStyle(fontSize: 20,color: primaryAppColor),
+                    style: TextStyle(fontSize: 20,color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -208,14 +208,14 @@ class _BookTicketState extends State<BookTicket> {
                         children: [
                           Text(
                             "Trip Seats :",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                            style: TextStyle(fontSize: 20,color: blueAppColor),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
                             "${widget.success.seats.length}",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                            style: TextStyle(fontSize: 20,color: blueAppColor),
                           ),
                         ],
                       ),
@@ -223,14 +223,14 @@ class _BookTicketState extends State<BookTicket> {
                         children: [
                           Text(
                             "Available :",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                            style: TextStyle(fontSize: 20,color: blueAppColor),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
                             "${counter()}",
-                            style: TextStyle(fontSize: 20,color: primaryAppColor),
+                            style: TextStyle(fontSize: 20,color: blueAppColor),
                           ),
                         ],
                       ),

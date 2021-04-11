@@ -14,7 +14,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       appBar: AppBar(
         title: Text('Settings',style: TextStyle(color: primaryAppColor),),
         centerTitle: true,
@@ -31,12 +31,12 @@ class _SettingsState extends State<Settings> {
           new Container(
             margin: EdgeInsets.only(top: 20,left: 20,bottom: 10),
             child: Text('Account',style: TextStyle(
-                fontSize: 25.0,color: primaryAppColor,
+                fontSize: 25.0,color: blueAppColor,
             ),),
           ),
           new Card(
             margin: EdgeInsets.symmetric(vertical: 6,horizontal: 20),
-            elevation: 1,
+            elevation: 10,
             child: Column(
               children: <Widget>[
                 ListTile(
@@ -55,7 +55,7 @@ class _SettingsState extends State<Settings> {
 
           Card(
             margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
-            elevation: 1,
+            elevation: 10,
             child: Column(
               children: <Widget>[
                 ListTile(
@@ -85,12 +85,12 @@ class _SettingsState extends State<Settings> {
           new Container(
             margin: EdgeInsets.only(top: 20,left: 20,bottom: 10),
             child: Text('Security',style: TextStyle(
-                fontSize: 25.0,color: primaryAppColor,
+                fontSize: 25.0,color: blueAppColor,
             ),),
           ),
           Card(
             margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
-            elevation: 1,
+            elevation: 10,
             child: Column(
               children: <Widget>[
                 ListTile(
@@ -108,7 +108,7 @@ class _SettingsState extends State<Settings> {
           ),
           SizedBox(height: 10),
           Card(
-            elevation: 1,
+            elevation: 10,
             margin: EdgeInsets.symmetric(vertical: 6,horizontal: 20),
             child: ListTile(
               leading: Icon(Icons.exit_to_app),

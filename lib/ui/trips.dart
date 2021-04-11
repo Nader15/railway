@@ -120,24 +120,31 @@ class _TripsState extends State<Trips> {
                             text = text.toLowerCase();
                             tripsListForDisplay = tripsList.where((element) {
                               var title =
-                              element.destinationStation.name.toLowerCase();
+                                  element.destinationStation.name.toLowerCase();
                               return title.contains(text);
                             }).toList();
                           });
                         },
                         cursorColor: primaryAppColor,
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(5),
+                              borderSide: BorderSide.none
+                          ),
                           fillColor: primaryAppColor.withOpacity(0.1),
-                            filled: true,
-                            focusedBorder: InputBorder.none,
-                            hintText: "Find your destination ...",
-                            hintStyle: TextStyle(color: greyPrimaryColor),
-                            contentPadding:
-                                EdgeInsets.symmetric(horizontal: 10),
-                            enabledBorder: InputBorder.none,
-                            // border: OutlineInputBorder(
-                            //     borderSide:
-                            //         BorderSide(color: primaryAppColor, width: .8)),
+                          filled: true,
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5),
+                            borderSide: BorderSide(color: blueAppColor)
+                          ),
+                          suffixIcon: Icon(Icons.search,color: whiteColor,),
+                          hintText: "Find your destination ...",
+                          hintStyle: TextStyle(color: greyPrimaryColor),
+                          contentPadding: EdgeInsets.symmetric(horizontal: 10),
+                          // enabledBorder: InputBorder.none,
+                          // border: OutlineInputBorder(
+                          //     borderSide:
+                          //         BorderSide(color: primaryAppColor, width: .8)),
                         ),
                       ),
                     ),
@@ -147,14 +154,14 @@ class _TripsState extends State<Trips> {
             ),
           )),
       key: _scaffoldKey,
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       body: SafeArea(
         child: tripsList.length == 0
             ? Container(
                 alignment: Alignment.center,
                 child: Text(
                   "No Trips Founded",
-                  style: TextStyle(fontSize: 20,color: primaryAppColor),
+                  style: TextStyle(fontSize: 20, color: primaryAppColor),
                 ))
             : Container(
                 width: MediaQuery.of(context).size.width,

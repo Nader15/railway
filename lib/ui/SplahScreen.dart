@@ -43,14 +43,14 @@ class _openState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       body:  Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SvgPicture.asset("images/train.svg",color: primaryAppColor,height: 100,),
+              SvgPicture.asset("images/train.svg",color: blueAppColor,height: 100,),
               SizedBox(height: 20),
-              Text("Railway",style: TextStyle(color:primaryAppColor,fontSize: 40 ),),
+              Text("Railway",style: TextStyle(color:blueAppColor,fontSize: 40 ),),
             ],
           )
       ),

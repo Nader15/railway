@@ -7,11 +7,11 @@ import 'package:railway/models/tickets.dart';
 import 'package:railway/models/trips.dart';
 import 'package:railway/models/users.dart';
 import 'package:railway/ui/home_page.dart';
+import 'package:railway/ui/trips.dart';
 import 'package:railway/utils/custom_widgets/custom_snackBar.dart';
 import 'package:railway/utils/global_vars.dart';
 import 'package:railway/utils/navigator.dart';
 import 'package:xs_progress_hud/xs_progress_hud.dart';
-
 
 class Api {
   String baseUrl = 'https://railway-project.herokuapp.com/api/';
@@ -175,8 +175,7 @@ class Api {
     if (!(response.body).toString().contains('errors')) {
       return UsersModel.fromJson(dataContent);
     } else {
-      CustomSnackBar(
-          _scaffoldKey, context, dataContent["errors"].toString());
+      CustomSnackBar(_scaffoldKey, context, dataContent["errors"].toString());
       return false;
     }
   }
@@ -234,9 +233,9 @@ class Api {
 
     if (!(response.body).toString().contains('errors')) {
       CustomSnackBar(_scaffoldKey, context, "Ticket Created Successfully");
-      Future.delayed(Duration(seconds: 3), () {
-        navigateAndClearStack(context, HomePage(currentIndex: 2));
-      });
+      // Future.delayed(Duration(seconds: 3), () {
+      //   navigateAndClearStack(context, HomePage(currentIndex: 2));
+      // });
       print(json.decode(response.body));
       return TripsModel.fromJson(dataContent);
     } else {
@@ -244,6 +243,7 @@ class Api {
       return false;
     }
   }
+
   Future userTicketsApi(GlobalKey<ScaffoldState> _scaffoldKey) async {
     XsProgressHud.show(context);
 
@@ -277,6 +277,36 @@ class Api {
     } else {
       CustomSnackBar(
           _scaffoldKey, context, json.decode(response.body).toString());
+      return false;
+    }
+  }
+
+  Future deleteTicketApi(GlobalKey<ScaffoldState> _scaffoldKey, int Id) async {
+    XsProgressHud.show(context);
+
+    print(baseUrl + bookTicketUrl + "/$Id");
+    final String apiUrl = baseUrl + bookTicketUrl + "/$Id";
+    final response = await http.delete(
+      apiUrl,
+      headers: {
+        "Content-Type": "application/json",
+        HttpHeaders.authorizationHeader: UserTocken
+      },
+    );
+    List dataContent = json.decode(response.body);
+    // print("dataContent:: ${dataContent}");
+    XsProgressHud.hide();
+    if (!(response.body).toString().contains('errors')) {
+
+      CustomSnackBar(_scaffoldKey, context, "${dataContent.toString()}");
+      Navigator.pop(context);
+      Future.delayed(Duration(seconds: 3), () {
+        navigateAndClearStack(context, HomePage(currentIndex: 1));
+      });
+      print(json.decode(response.body));
+      return true;
+    } else {
+      CustomSnackBar(_scaffoldKey, context, response.body.toString());
       return false;
     }
   }

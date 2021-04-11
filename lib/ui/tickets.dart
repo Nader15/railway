@@ -7,7 +7,6 @@ import 'package:railway/models/tickets.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/global_vars.dart';
 
-
 class Tickets extends StatefulWidget {
   @override
   _TicketsState createState() => _TicketsState();
@@ -16,8 +15,6 @@ class Tickets extends StatefulWidget {
 class _TicketsState extends State<Tickets> {
   TicketsModel ticketsModel;
   List<Success> ticketsList = List();
-
-
 
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -49,6 +46,7 @@ class _TicketsState extends State<Tickets> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(
           leading: Container(),
           backgroundColor: blueAppColor,
@@ -77,7 +75,7 @@ class _TicketsState extends State<Tickets> {
                     children: [
                       Text(
                         "${ticketsList.length}",
-                        style: TextStyle(fontSize: 25,color: primaryAppColor),
+                        style: TextStyle(fontSize: 25, color: primaryAppColor),
                       ),
                       Container(
                         padding: const EdgeInsets.only(right: 10, left: 20),
@@ -100,13 +98,13 @@ class _TicketsState extends State<Tickets> {
               ),
             ),
           )),
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       body: SafeArea(
         child: ticketsList.length == 0
             ? Center(
                 child: Text(
                   "You have no tickets.",
-                  style: TextStyle(fontSize: 20,color: primaryAppColor),
+                  style: TextStyle(fontSize: 20, color: blueAppColor),
                 ),
               )
             : Container(
@@ -123,7 +121,7 @@ class _TicketsState extends State<Tickets> {
                               child: Image.asset(
                                 "images/ticket_sample1.png",
                                 height: 130,
-                                color: primaryAppColor,
+                                color: blackColor,
                               ),
                             ),
                             Container(
@@ -131,8 +129,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${userId}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -149,8 +147,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${ticketsList[index].tripData.price} EGP",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -158,8 +156,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${ticketsList[index].tripData.trip.baseStation.name.toString()}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -167,8 +165,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${ticketsList[index].tripData.trip.destinationStation.name}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -176,7 +174,7 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Icon(
                                 Icons.airline_seat_recline_normal_sharp,
-                                color: blueAppColor,
+                                color: whiteColor,
                               ),
                             ),
                             Container(
@@ -184,8 +182,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "Class ${ticketsList[index].tripData.Class}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -193,8 +191,8 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${ticketsList[index].tripData.trip.departTime.split(":")[0] + ":" + ticketsList[index].tripData.trip.departTime.split(":")[1]}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                             Container(
@@ -202,19 +200,73 @@ class _TicketsState extends State<Tickets> {
                               alignment: Alignment.topCenter,
                               child: Text(
                                 "${ticketsList[index].tripData.trip.arrivalTime.split(":")[0] + ":" + ticketsList[index].tripData.trip.arrivalTime.split(":")[1]}",
-                                style: TextStyle(
-                                    fontSize: 15, color: blueAppColor),
+                                style:
+                                    TextStyle(fontSize: 15, color: whiteColor),
                               ),
                             ),
                           ],
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 10),
-                          child: Text("${ticketsList[index].ticketTime.split(".")[0].split("T")}",style: TextStyle(color: primaryAppColor),),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text(
+                                "${ticketsList[index].ticketTime.split(".")[0].split("T")}",
+                                style: TextStyle(color: blueAppColor),
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.delete_forever,
+                                  color: redColor,
+                                ),
+                                onPressed: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) {
+                                        return AlertDialog(
+                                          backgroundColor: Color(0xff1D1D1D),
+                                          title: Text(
+                                            "Delete Ticket ?",
+                                            style:
+                                            TextStyle(color: Colors.white),
+                                          ),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(20)),
+                                          actions: [
+                                            FlatButton(
+                                                onPressed: () {
+                                                  Api(context).deleteTicketApi(_scaffoldKey, ticketsList[index].seatId);
+                                                },
+                                                child: Text(
+                                                  "delete",
+                                                )),
+                                            FlatButton(
+                                                onPressed: () {
+                                                  Navigator.of(context).pop();
+                                                },
+                                                child: Text(
+                                                  "cancel",
+                                                ))
+                                          ],
+                                          content: Container(
+                                            height: MediaQuery.of(context).size.height * 0.15,
+                                            child: Center(
+                                              child: Text(
+                                                " Delete This Ticket ?",
+                                                style: TextStyle( color: Colors.white),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                },
+                              )
+                            ],
+                          ),
                         ),
                         Divider(
-                          thickness: 0,
-                          color: primaryAppColor,
+                          color: blueAppColor,
                         )
                       ],
                     );

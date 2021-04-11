@@ -6,7 +6,7 @@ class Background extends StatelessWidget {
     return Stack(
       children: [
         Opacity(
-          opacity: 0.6,
+          opacity: 0.7,
           child: Image.asset("images/background2.jpg",
               fit: BoxFit.cover,
               height: MediaQuery.of(context).size.height,

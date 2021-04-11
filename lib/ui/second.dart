@@ -22,14 +22,14 @@ class _SecondState extends State<Second> {
             SafeArea(
               child: Container(
                 height: 30,
-                width: 95,
+                width: 100,
                 margin: EdgeInsets.only(
-                    left: 10,
+                    left: MediaQuery.of(context).size.width / 70,
                     top: MediaQuery.of(context).size.height / 15.5,),
                 padding: EdgeInsets.fromLTRB(60.0, 16.0, 65.0, 16.0),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                    color: primaryAppColor.withOpacity(.7),
+                    color: blueAppColor.withOpacity(.7),
                     borderRadius: BorderRadius.all(Radius.circular(30))),
               ),
             ),
@@ -62,7 +62,7 @@ class _SecondState extends State<Second> {
                 padding: EdgeInsets.only(
                     bottom: 0, top: MediaQuery.of(context).size.height / 1.15),
                 child: RaisedButton(
-                  color: primaryAppColor,
+                  color: blueAppColor,
                   padding: EdgeInsets.only(
                     left: MediaQuery.of(context).size.width / 3,
                     right: MediaQuery.of(context).size.width / 3,
@@ -76,7 +76,7 @@ class _SecondState extends State<Second> {
                   },
                   child: Text(
                     "Get Started",
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: primaryAppColor),
                   ),
                 ),
               ),

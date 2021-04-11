@@ -156,7 +156,7 @@ class CustomHomeDrawer extends StatelessWidget {
                     ),
                     onTap: () {
                       clearAllData().then((value) {
-                        navigateAndKeepStack(context, Login());
+                        navigateAndClearStack(context, Login());
                       });
                     },
                   )

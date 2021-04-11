@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:railway/utils/colors_file.dart';
 
 Container onBoarding3(){
@@ -6,7 +7,18 @@ Container onBoarding3(){
     child: Column(
       children: [
         Center(
-            child: Image.asset("images/ticketOnBoard.png",height: 200,),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset("images/ticketOnBoard.png",height: 200,color: blueAppColor,),
+                Image.asset(
+                  "images/ticket_sample1.png",
+                  height: 50,
+                  color: primaryAppColor,
+                ),
+                SizedBox(height: 20,),
+              ],
+            ),
         ),
         SizedBox(height: 36.8),
         Container(

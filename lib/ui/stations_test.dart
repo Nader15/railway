@@ -46,7 +46,7 @@ class _StationsTestState extends State<StationsTest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text('Main Station',style: TextStyle(color: primaryAppColor),),
@@ -68,7 +68,7 @@ class _StationsTestState extends State<StationsTest> {
                 leading:  Icon(Icons.location_on,color: Colors.blue,),
                 title: Text(
                   "${stationsList[index].name}",
-                  style: TextStyle(color: primaryAppColor, fontSize: 20,),
+                  style: TextStyle(color: blueAppColor, fontSize: 20,),
                 ),
               );
             },

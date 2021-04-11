@@ -6,7 +6,13 @@ Container onBoarding1(){
     child: Column(
       children: [
         Center(
-            child: Image.asset("images/loginOnBoard.png",height: 200,),
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                Image.asset("images/loginOnBoard.png",height: 200,color: blueAppColor,),
+                Icon(Icons.exit_to_app,color: primaryAppColor,size: 80,)
+              ],
+            ),
         ),
         SizedBox(height: 36.8),
         Container(

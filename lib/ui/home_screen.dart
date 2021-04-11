@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: blueAppColor,
+      backgroundColor: whiteColor,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -56,12 +56,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 margin: EdgeInsets.only(left: 13),
                 child: Text(
                   'Application Overview',
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: primaryAppColor),
+                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold,color: blueAppColor),
                 ),
-              ),
-              Divider(
-                thickness: 0,
-                height: 0,
               ),
               Container(
                 // padding: EdgeInsets.only(bottom: 90),
@@ -110,13 +106,14 @@ class OverView extends StatelessWidget {
           margin: EdgeInsets.only(left: 40, right: 40, bottom: 20),
           height: 100,
           decoration: BoxDecoration(
-              // boxShadow: [
-              //   BoxShadow(
-              //       color: Colors.grey,
-              //       blurRadius: 10.0,
-              //       offset: Offset(1.0, 5.0))
-              // ],
-              color: Colors.grey.shade200,
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    blurRadius: 10.0,
+                    offset: Offset(1.0, 5.0))
+              ],
+              // color: Colors.grey.shade200,
+              color: whiteColor,
               borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(10.0),
                   bottomRight: Radius.circular(10.0))),
