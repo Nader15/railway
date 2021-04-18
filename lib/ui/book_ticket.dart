@@ -5,7 +5,6 @@ import 'package:railway/models/trips_model.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
 
-
 class BookTicket extends StatefulWidget {
   final Success success;
 
@@ -90,27 +89,27 @@ class _BookTicketState extends State<BookTicket> {
                 children: [
                   Text(
                     "- Station :",
-                    style: TextStyle(fontSize: 20,color: blueAppColor),
+                    style: TextStyle(fontSize: 20, color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Card(
-                    margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                    margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                     elevation: 10,
-                    child:  Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             widget.success.baseStation.name,
-                            style: TextStyle(fontSize: 20,color: blackColor),
+                            style: TextStyle(fontSize: 20, color: blackColor),
                           ),
                           Icon(Icons.arrow_forward),
                           Text(
                             widget.success.destinationStation.name,
-                            style: TextStyle(fontSize: 20,color: blackColor),
+                            style: TextStyle(fontSize: 20, color: blackColor),
                           ),
                         ],
                       ),
@@ -121,39 +120,38 @@ class _BookTicketState extends State<BookTicket> {
                   ),
                   Text(
                     "- Time :",
-                    style: TextStyle(fontSize: 20,color: blueAppColor),
+                    style: TextStyle(fontSize: 20, color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Card(
-                    margin: EdgeInsets.symmetric(vertical: 0,horizontal: 20),
+                    margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
                     elevation: 10,
-                    child:  Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Text(
                             widget.success.departTime,
-                            style: TextStyle(fontSize: 18,color: blackColor),
+                            style: TextStyle(fontSize: 18, color: blackColor),
                           ),
-                         Icon(Icons.arrow_forward),
+                          Icon(Icons.arrow_forward),
                           Text(
                             widget.success.arrivalTime,
-                            style: TextStyle(fontSize: 18,color: blackColor),
+                            style: TextStyle(fontSize: 18, color: blackColor),
                           ),
                         ],
                       ),
                     ),
                   ),
-
                   SizedBox(
                     height: 20,
                   ),
                   Text(
                     "- Choose Seat :",
-                    style: TextStyle(fontSize: 20,color: blueAppColor),
+                    style: TextStyle(fontSize: 20, color: blueAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -173,38 +171,49 @@ class _BookTicketState extends State<BookTicket> {
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
-                          onTap:
-                              widget.success.seats[index].status == "available"
-                                  ? () {
-                                      Api(context).bookTicketApi(scafoldState,
-                                          widget.success.seats[index].id);
-                                    }
-                                  : () {},
-                          child: SvgPicture.asset("images/seatIcon.svg",width: 50,color: widget.success.seats[index].status ==
+                            onTap: widget.success.seats[index].status ==
                                     "available"
-                                ? greenColor
-                                : redColor,)
-                          // Container(
-                          //   alignment: Alignment.center,
-                          //   decoration: BoxDecoration(
-                          //     color: widget.success.seats[index].status ==
-                          //             "available"
-                          //         ? greenColor
-                          //         : redColor,
-                          //   ),
-                          //   child: Text(
-                          //     "class ${widget.success.seats[index].car.level.Class}",
-                          //     style: TextStyle(color: whiteColor),
-                          //   ),
-                          // ),
-                        );
+                                ? () {
+                                    Api(context).bookTicketApi(scafoldState,
+                                        widget.success.seats[index].id);
+                                  }
+                                : () {},
+                            child: Stack(
+                              children: [
+                                SvgPicture.asset(
+                                  "images/seatIcon.svg",
+                                  width: 50,
+                                  color: widget.success.seats[index].status ==
+                                          "available"
+                                      ? greenColor
+                                      : redColor,
+                                ),
+                                Padding(
+                                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/20,top: 5),
+                                  child: Text("${widget.success.seats[index].car.level.Class}"),
+                                )
+                              ],
+                            )
+                            // Container(
+                            //   alignment: Alignment.center,
+                            //   decoration: BoxDecoration(
+                            //     color: widget.success.seats[index].status ==
+                            //             "available"
+                            //         ? greenColor
+                            //         : redColor,
+                            //   ),
+                            //   child: Text(
+                            //     "class ${widget.success.seats[index].car.level.Class}",
+                            //     style: TextStyle(color: whiteColor),
+                            //   ),
+                            // ),
+                            );
                       },
                     ),
                   ),
                   SizedBox(
                     height: 30,
                   ),
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -212,14 +221,14 @@ class _BookTicketState extends State<BookTicket> {
                         children: [
                           Text(
                             "Trip Seats :",
-                            style: TextStyle(fontSize: 20,color: blueAppColor),
+                            style: TextStyle(fontSize: 20, color: blueAppColor),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
                             "${widget.success.seats.length}",
-                            style: TextStyle(fontSize: 20,color: blueAppColor),
+                            style: TextStyle(fontSize: 20, color: blueAppColor),
                           ),
                         ],
                       ),
@@ -227,14 +236,14 @@ class _BookTicketState extends State<BookTicket> {
                         children: [
                           Text(
                             "Available :",
-                            style: TextStyle(fontSize: 20,color: blueAppColor),
+                            style: TextStyle(fontSize: 20, color: blueAppColor),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Text(
                             "${counter()}",
-                            style: TextStyle(fontSize: 20,color: blueAppColor),
+                            style: TextStyle(fontSize: 20, color: blueAppColor),
                           ),
                         ],
                       ),

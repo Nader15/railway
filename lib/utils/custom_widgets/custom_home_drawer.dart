@@ -5,7 +5,7 @@ import 'package:railway/ui/login.dart';
 import 'package:railway/ui/profile.dart';
 import 'package:railway/ui/settings.dart';
 import 'package:railway/ui/stations_test.dart';
-import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/railway/lib/ui/train_tracking/train_tracking.dart';
+import 'package:railway/ui/train_tracking/train_tracking.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/global_vars.dart';
 import 'package:railway/utils/navigator.dart';
