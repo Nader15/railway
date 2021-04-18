@@ -3,7 +3,7 @@
 // import 'package:railway_v1/ApiFunctions/Api.dart';
 // import 'package:railway_v1/models/stations.dart';
 // import 'package:railway_v1/ui/home_page.dart';
-// import 'package:railway_v1/ui/trips.dart';
+// import 'package:railway_v1/ui/trips_model.dart';
 // import 'package:railway_v1/utils/colors_file.dart';
 // import 'package:railway_v1/utils/custom_widgets/custom_button.dart';
 // import 'package:railway_v1/utils/global_vars.dart';

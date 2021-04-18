@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:railway/ApiFunctions/Api.dart';
-import 'package:railway/models/trips.dart';
+import 'package:railway/models/trips_model.dart';
 import 'package:railway/utils/bookticket_bottomSheet.dart';
 import 'package:railway/utils/bottomSheet.dart';
 import 'package:railway/utils/colors_file.dart';
@@ -165,14 +165,14 @@ class _TripsState extends State<Trips> {
                 ))
             : Container(
                 width: MediaQuery.of(context).size.width,
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(left: 20, right: 20,top: 20),
                 child: Container(
                   width: 150,
                   child: GridView.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 1,
-                      childAspectRatio: 2.5,
-                      mainAxisSpacing: .1,
+                      childAspectRatio: 2,
+                      mainAxisSpacing: 10.1,
                       crossAxisSpacing: 2,
                     ),
                     physics: ScrollPhysics(),
@@ -205,16 +205,15 @@ class _TripsState extends State<Trips> {
                   success: success,
                 ));
       },
-      child: Container(
-        margin: EdgeInsets.only(top: 10),
-        height: 150,
-        child: Card(
-          elevation: 10,
-          color: primaryAppColor,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
+      child: Card(
+        elevation: 5,
+        color: primaryAppColor,
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 200,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

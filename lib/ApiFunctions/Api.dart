@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:railway/models/stations.dart';
 import 'package:railway/models/tickets.dart';
-import 'package:railway/models/trips.dart';
+import 'package:railway/models/trips_model.dart';
 import 'package:railway/models/users.dart';
 import 'package:railway/ui/home_page.dart';
 import 'package:railway/ui/trips.dart';
@@ -233,9 +233,9 @@ class Api {
 
     if (!(response.body).toString().contains('errors')) {
       CustomSnackBar(_scaffoldKey, context, "Ticket Created Successfully");
-      // Future.delayed(Duration(seconds: 3), () {
-      //   navigateAndClearStack(context, HomePage(currentIndex: 2));
-      // });
+      Future.delayed(Duration(seconds: 3), () {
+        navigateAndClearStack(context, HomePage(currentIndex: 2));
+      });
       print(json.decode(response.body));
       return TripsModel.fromJson(dataContent);
     } else {

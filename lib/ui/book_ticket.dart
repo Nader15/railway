@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:railway/ApiFunctions/Api.dart';
-import 'package:railway/models/trips.dart';
+import 'package:railway/models/trips_model.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
 
@@ -166,7 +166,7 @@ class _BookTicketState extends State<BookTicket> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 5,
+                        crossAxisCount: 4,
                         childAspectRatio: 1.5,
                         mainAxisSpacing: 5,
                         crossAxisSpacing: 5,
@@ -180,19 +180,23 @@ class _BookTicketState extends State<BookTicket> {
                                           widget.success.seats[index].id);
                                     }
                                   : () {},
-                          child: Container(
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                              color: widget.success.seats[index].status ==
-                                      "available"
-                                  ? greenColor
-                                  : redColor,
-                            ),
-                            child: Text(
-                              "${widget.success.seats[index].status}",
-                              style: TextStyle(color: whiteColor),
-                            ),
-                          ),
+                          child: SvgPicture.asset("images/seatIcon.svg",width: 50,color: widget.success.seats[index].status ==
+                                    "available"
+                                ? greenColor
+                                : redColor,)
+                          // Container(
+                          //   alignment: Alignment.center,
+                          //   decoration: BoxDecoration(
+                          //     color: widget.success.seats[index].status ==
+                          //             "available"
+                          //         ? greenColor
+                          //         : redColor,
+                          //   ),
+                          //   child: Text(
+                          //     "class ${widget.success.seats[index].car.level.Class}",
+                          //     style: TextStyle(color: whiteColor),
+                          //   ),
+                          // ),
                         );
                       },
                     ),

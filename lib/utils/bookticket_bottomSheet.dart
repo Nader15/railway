@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:railway/models/trips.dart';
+import 'package:railway/models/trips_model.dart';
 import 'package:railway/ui/book_ticket.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';

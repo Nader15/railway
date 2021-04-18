@@ -5,7 +5,7 @@ import 'package:railway/ui/login.dart';
 import 'package:railway/ui/profile.dart';
 import 'package:railway/ui/settings.dart';
 import 'package:railway/ui/stations_test.dart';
-import 'package:railway/ui/train_tracking.dart';
+import 'file:///C:/Users/Shark/AndroidStudioProjects/GitHub-Projects/railway/lib/ui/train_tracking/train_tracking.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/global_vars.dart';
 import 'package:railway/utils/navigator.dart';
@@ -90,24 +90,24 @@ class CustomHomeDrawer extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => StationsTest()));
                       }),
-                  // ListTile(
-                  //     leading: SvgPicture.asset(
-                  //       "images/train.svg",
-                  //       fit: BoxFit.cover,
-                  //       width: 20,
-                  //       height: 23,
-                  //       color: blackColor,
-                  //     ),
-                  //     title: Text(
-                  //       'Tracking My Train',
-                  //       style: TextStyle(fontWeight: FontWeight.bold),
-                  //     ),
-                  //     onTap: () {
-                  //       Navigator.push(
-                  //           context,
-                  //           MaterialPageRoute(
-                  //               builder: (context) => TrainTracking()));
-                  //     }),
+                  ListTile(
+                      leading: SvgPicture.asset(
+                        "images/train.svg",
+                        fit: BoxFit.cover,
+                        width: 20,
+                        height: 23,
+                        color: primaryAppColor,
+                      ),
+                      title: Text(
+                        'Tracking My Train',
+                        style: TextStyle(fontWeight: FontWeight.bold,color: primaryAppColor),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => MyHomePage()));
+                      }),
                   Divider(),
                   ListTile(
                     leading: Icon(Icons.phone, color: primaryAppColor),
