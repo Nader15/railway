@@ -101,7 +101,7 @@ class BaseStation {
   double latitude;
   double longitude;
   String createdAt;
-  Null updatedAt;
+  dynamic updatedAt;
 
   BaseStation({this.id, this.name, this.latitude, this.longitude, this.createdAt, this.updatedAt});
 
@@ -228,8 +228,8 @@ class Car {
 class Level {
   int id;
   String Class;
-  Null createdAt;
-  Null updatedAt;
+  dynamic createdAt;
+  dynamic updatedAt;
 
   Level({this.id, this.Class, this.createdAt, this.updatedAt});
 

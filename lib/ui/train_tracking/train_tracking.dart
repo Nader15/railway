@@ -1,17 +1,33 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:railway/ui/train_tracking/model.dart';
 import 'package:railway/utils/colors_file.dart';
 
-class MyHomePage extends StatefulWidget {
+class TrainTracking extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _TrainTrackingState createState() => _TrainTrackingState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  GoogleMapController _controller;
+class _TrainTrackingState extends State<TrainTracking> {
+  GoogleMapController mapController;
 
-  List<Marker> allMarkers = [];
+  Position _currentPosition;
+  String _currentAddress;
+
+  Set<Marker> allMarkers = {};
+
+  PolylinePoints polylinePoints;
+  Map<PolylineId, Polyline> polylines = {};
+  List<LatLng> polylineCoordinates = [];
+
+  /////////////////////////////////////////////////////////////////////////
+
+  GoogleMapController _mapController;
 
   PageController _pageController;
 
@@ -21,12 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    _getCurrentLocation();
     coffeeShops.forEach((element) {
       allMarkers.add(Marker(
           markerId: MarkerId(element.stationName),
           draggable: false,
           infoWindow:
-          InfoWindow(title: element.stationName, snippet: element.address),
+              InfoWindow(title: element.stationName, snippet: element.address),
           position: element.locationCoords));
     });
     _pageController = PageController(initialPage: 1, viewportFraction: 0.8)
@@ -98,7 +115,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                         fit: BoxFit.cover))),
                             SizedBox(width: 5.0),
                             Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -129,9 +147,59 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  //Initialize Geolocator and define a variable.
+  final Geolocator _geolocator = Geolocator();
+
+  // Method for retrieving the current location
+  _getCurrentLocation() async {
+    await _geolocator
+        .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
+        .then((Position position) async {
+      setState(() {
+        // Store the position in the variable
+        _currentPosition = position;
+
+        print('CURRENT POS: $_currentPosition');
+        // For moving the camera to current location
+        _mapController.animateCamera(
+          CameraUpdate.newCameraPosition(
+            CameraPosition(
+              target: LatLng(position.latitude, position.longitude),
+              zoom: 18.0,
+            ),
+          ),
+        );
+      });
+    }).catchError((e) {
+      print(e);
+    });
+  }
+
+  // Method for retrieving the address
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: blueAppColor,
+          onPressed: () {
+            _mapController.animateCamera(
+              CameraUpdate.newCameraPosition(
+                CameraPosition(
+                  target: LatLng(
+                    _currentPosition.latitude,
+                    _currentPosition.longitude,
+                  ),
+                  zoom: 18.0,
+                ),
+              ),
+            );
+          },
+          child: Icon(
+            Icons.my_location,
+            color: whiteColor,
+          ),
+        ),
         appBar: AppBar(
           backgroundColor: blueAppColor,
           title: Text('Stations & Train Tracking'),
@@ -169,12 +237,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void mapCreated(controller) {
     setState(() {
-      _controller = controller;
+      _mapController = controller;
     });
   }
 
   moveCamera() {
-    _controller.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
+    _mapController.animateCamera(CameraUpdate.newCameraPosition(CameraPosition(
         target: coffeeShops[_pageController.page.toInt()].locationCoords,
         zoom: 14.0,
         bearing: 45.0,

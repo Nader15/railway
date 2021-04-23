@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:railway/ui/SplahScreen.dart';
+import 'package:railway/ui/train_tracking/train_tracking.dart';
 
 void main()=>runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
@@ -7,5 +8,6 @@ void main()=>runApp(MaterialApp(
   // home: StationsTest(),
   // home: HomePage(),
   // home: TrainTracking(),
+  // home: MapScreen(),
   home: SplashScreen(),
 ));

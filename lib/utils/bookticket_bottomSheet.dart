@@ -6,7 +6,6 @@ import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
 import 'package:railway/utils/navigator.dart';
 
-
 class bookTicketBottomSheet extends StatefulWidget {
   Success success;
 
@@ -17,7 +16,6 @@ class bookTicketBottomSheet extends StatefulWidget {
 }
 
 class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
-
   counter() {
     int count = 0;
     for (int i = 0; i < widget.success.seats.length; i++) {
@@ -28,7 +26,6 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
     }
     return count;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +53,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
               ),
               Text(
                 "Details",
-                style: TextStyle(fontSize: 20,color: primaryAppColor),
+                style: TextStyle(fontSize: 20, color: primaryAppColor),
               ),
               SizedBox(
                 height: 20,
@@ -66,7 +63,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                 children: [
                   Text(
                     "- Station :",
-                    style: TextStyle(fontSize: 20,color: primaryAppColor),
+                    style: TextStyle(fontSize: 20, color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -76,15 +73,15 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         widget.success.baseStation.name,
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                       Text(
                         "To",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                       Text(
                         widget.success.destinationStation.name,
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -93,7 +90,7 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                   ),
                   Text(
                     "- Time :",
-                    style: TextStyle(fontSize: 20,color: primaryAppColor),
+                    style: TextStyle(fontSize: 20, color: primaryAppColor),
                   ),
                   SizedBox(
                     height: 20,
@@ -103,15 +100,15 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         widget.success.departTime,
-                        style: TextStyle(fontSize: 15,color: primaryAppColor),
+                        style: TextStyle(fontSize: 15, color: primaryAppColor),
                       ),
                       Text(
                         "To",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                       Text(
                         widget.success.arrivalTime,
-                        style: TextStyle(fontSize: 15,color: primaryAppColor),
+                        style: TextStyle(fontSize: 15, color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -122,14 +119,14 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         "- Trip Seats :",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "${widget.success.seats.length}",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -140,14 +137,14 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                     children: [
                       Text(
                         "- Available Seats :",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                       SizedBox(
                         width: 10,
                       ),
                       Text(
                         "${counter()}",
-                        style: TextStyle(fontSize: 20,color: primaryAppColor),
+                        style: TextStyle(fontSize: 20, color: primaryAppColor),
                       ),
                     ],
                   ),
@@ -159,7 +156,6 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
               SizedBox(
                 height: 20,
               ),
-
             ],
           ),
           Padding(
@@ -171,8 +167,11 @@ class _bookTicketBottomSheetState extends State<bookTicketBottomSheet> {
                 bttnNameSize: 18,
                 onPress: () {
                   Navigator.pop(context);
-                  navigateAndKeepStack(context, BookTicket(success: widget.success,));
-
+                  navigateAndKeepStack(
+                      context,
+                      BookTicket(
+                        success: widget.success,
+                      ));
                 }),
           ),
         ],

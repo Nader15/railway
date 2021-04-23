@@ -230,8 +230,7 @@ class Api {
     Map<String, dynamic> dataContent = json.decode(response.body);
     XsProgressHud.hide();
     print("dataContent2:: ${response.body.toString().contains('errors')}");
-
-    if (!(response.body).toString().contains('errors')) {
+    if (!(response.body).toString().contains('error')) {
       CustomSnackBar(_scaffoldKey, context, "Ticket Created Successfully");
       Future.delayed(Duration(seconds: 3), () {
         navigateAndClearStack(context, HomePage(currentIndex: 2));
@@ -239,7 +238,7 @@ class Api {
       print(json.decode(response.body));
       return TripsModel.fromJson(dataContent);
     } else {
-      CustomSnackBar(_scaffoldKey, context, dataContent.toString());
+      CustomSnackBar(_scaffoldKey, context, dataContent["error"].toString());
       return false;
     }
   }
