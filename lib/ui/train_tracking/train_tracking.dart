@@ -24,6 +24,7 @@ class _TrainTrackingState extends State<TrainTracking> {
   PolylinePoints polylinePoints;
   Map<PolylineId, Polyline> polylines = {};
   List<LatLng> polylineCoordinates = [];
+  final Set<Polyline> _polyline = {};
 
   /////////////////////////////////////////////////////////////////////////
 
@@ -33,10 +34,20 @@ class _TrainTrackingState extends State<TrainTracking> {
 
   int prevPage;
 
+  static LatLng _lat1 = LatLng(30.781681, 30.994857);
+  static LatLng _lat2 = LatLng(30.455546, 31.181067);
+  static LatLng _lat3 = LatLng(30.062382, 31.246582);
+  static LatLng _lat4 = LatLng(30.009264, 31.208038);
+  static LatLng _lat5 = LatLng(26.551354, 31.699072);
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    latlngSegment1.add(_lat1);
+    latlngSegment1.add(_lat2);
+    latlngSegment1.add(_lat3);
+    latlngSegment1.add(_lat4);
+    latlngSegment1.add(_lat5);
     _getCurrentLocation();
     coffeeShops.forEach((element) {
       allMarkers.add(Marker(
@@ -211,10 +222,11 @@ class _TrainTrackingState extends State<TrainTracking> {
               height: MediaQuery.of(context).size.height - 50.0,
               width: MediaQuery.of(context).size.width,
               child: GoogleMap(
+                polylines: _polyline,
                 initialCameraPosition: CameraPosition(
-                    target: LatLng(40.7128, -74.0060), zoom: 12.0),
+                    target: _lastMapPosition, zoom: 12.0),
                 markers: Set.from(allMarkers),
-                onMapCreated: mapCreated,
+                onMapCreated: _onMapCreated,
               ),
             ),
             Positioned(
@@ -235,10 +247,38 @@ class _TrainTrackingState extends State<TrainTracking> {
         ));
   }
 
-  void mapCreated(controller) {
+  // void mapCreated(controller) {
+  //   setState(() {
+  //     _mapController = controller;
+  //   });
+  // }
+  LatLng _lastMapPosition = _lat1;
+  List<LatLng> latlngSegment1 = List();
+
+  void _onMapCreated(GoogleMapController controllerParam ) {
     setState(() {
-      _mapController = controller;
-    });
+      controllerParam = controllerParam;
+      allMarkers.add(Marker(
+        // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(_lastMapPosition.toString()),
+        //_lastMapPosition is any coordinate which should be your default
+        //position when map opens up
+        position: _lastMapPosition,
+        infoWindow: InfoWindow(
+          title: 'Awesome Polyline tutorial',
+          snippet: 'This is a snippet',
+        ),
+      ));
+
+      _polyline.add(Polyline(
+        polylineId: PolylineId('line1'),
+        visible: true,
+        //latlng is List<LatLng>
+        points: latlngSegment1,
+        width: 2,
+        color: Colors.blue,
+      ));
+     });
   }
 
   moveCamera() {

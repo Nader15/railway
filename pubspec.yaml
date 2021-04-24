@@ -21,14 +21,15 @@ dependencies:
   intl: ^0.16.1
   google_maps_flutter:
   google_map_polyline:
+
+#  google_map_polyline:
   permission:
   geolocator: ^5.3.1
   geocoding: ^1.0.5
   flutter_polyline_points: ^0.2.4
-  dio:
+
   google_maps_webservice: ^0.0.19
-  google_maps_util: ^0.0.3
-  provider: ^5.0.0
+#  google_maps_util: ^0.0.3
 
 dev_dependencies:
   flutter_test:
