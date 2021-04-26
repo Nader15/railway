@@ -1,6 +1,8 @@
 import 'dart:math';
-
+import 'dart:typed_data';
+import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
@@ -255,15 +257,24 @@ class _TrainTrackingState extends State<TrainTracking> {
   LatLng _lastMapPosition = _lat1;
   List<LatLng> latlngSegment1 = List();
 
-  void _onMapCreated(GoogleMapController controllerParam ) {
+  Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
+  }
+  void _onMapCreated(GoogleMapController controllerParam )async {
+    final Uint8List markerIcon = await getBytesFromAsset('images/train_png.png', 100);
     setState(() {
       controllerParam = controllerParam;
       allMarkers.add(Marker(
-        // This marker id can be anything that uniquely identifies each marker.
-        markerId: MarkerId(_lastMapPosition.toString()),
+
+          icon: BitmapDescriptor.fromBytes(markerIcon),
+            // This marker id can be anything that uniquely identifies each marker.
+        markerId: MarkerId(LatLng(30.781681, 30.994857).toString()),
         //_lastMapPosition is any coordinate which should be your default
         //position when map opens up
-        position: _lastMapPosition,
+        position: LatLng(30.781681, 30.994857),
         infoWindow: InfoWindow(
           title: 'Awesome Polyline tutorial',
           snippet: 'This is a snippet',
