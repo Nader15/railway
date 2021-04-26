@@ -41,6 +41,7 @@ class _TrainTrackingState extends State<TrainTracking> {
   static LatLng _lat3 = LatLng(30.062382, 31.246582);
   static LatLng _lat4 = LatLng(30.009264, 31.208038);
   static LatLng _lat5 = LatLng(26.551354, 31.699072);
+
   @override
   void initState() {
     // TODO: implement initState
@@ -192,6 +193,7 @@ class _TrainTrackingState extends State<TrainTracking> {
 
   @override
   Widget build(BuildContext context) {
+    print("date ${DateTime.now().hour}");
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: blueAppColor,
@@ -225,8 +227,8 @@ class _TrainTrackingState extends State<TrainTracking> {
               width: MediaQuery.of(context).size.width,
               child: GoogleMap(
                 polylines: _polyline,
-                initialCameraPosition: CameraPosition(
-                    target: _lastMapPosition, zoom: 12.0),
+                initialCameraPosition:
+                    CameraPosition(target: _lastMapPosition, zoom: 12.0),
                 markers: Set.from(allMarkers),
                 onMapCreated: _onMapCreated,
               ),
@@ -259,22 +261,34 @@ class _TrainTrackingState extends State<TrainTracking> {
 
   Future<Uint8List> getBytesFromAsset(String path, int width) async {
     ByteData data = await rootBundle.load(path);
-    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(), targetWidth: width);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
     ui.FrameInfo fi = await codec.getNextFrame();
-    return (await fi.image.toByteData(format: ui.ImageByteFormat.png)).buffer.asUint8List();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))
+        .buffer
+        .asUint8List();
   }
-  void _onMapCreated(GoogleMapController controllerParam )async {
-    final Uint8List markerIcon = await getBytesFromAsset('images/train_png.png', 100);
+
+  void _onMapCreated(GoogleMapController controllerParam) async {
+    final Uint8List markerIcon =
+        await getBytesFromAsset('images/train_png.png', 100);
     setState(() {
       controllerParam = controllerParam;
       allMarkers.add(Marker(
-
-          icon: BitmapDescriptor.fromBytes(markerIcon),
-            // This marker id can be anything that uniquely identifies each marker.
+        icon: BitmapDescriptor.fromBytes(markerIcon),
+        // This marker id can be anything that uniquely identifies each marker.
         markerId: MarkerId(LatLng(30.781681, 30.994857).toString()),
         //_lastMapPosition is any coordinate which should be your default
         //position when map opens up
-        position: LatLng(30.781681, 30.994857),
+        position: DateTime.now().hour == 9
+            ? LatLng(30.455546, 31.181067)
+            : DateTime.now().hour == 10
+                ? LatLng(30.781681, 30.994857)
+                : DateTime.now().hour == 11
+                    ? LatLng(30.062382, 31.246582)
+                    : DateTime.now().hour == 11
+                        ? LatLng(30.009264, 31.208038)
+                        : LatLng(26.551354, 31.699072),
         infoWindow: InfoWindow(
           title: 'Awesome Polyline tutorial',
           snippet: 'This is a snippet',
@@ -289,7 +303,7 @@ class _TrainTrackingState extends State<TrainTracking> {
         width: 2,
         color: Colors.blue,
       ));
-     });
+    });
   }
 
   moveCamera() {

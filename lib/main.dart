@@ -8,8 +8,8 @@ void main()=>runApp(MaterialApp(
   title: 'Railway-TestApp',
   // home: StationsTest(),
   // home: HomePage(),
-  home: TrainTracking(),
+  // home: TrainTracking(),
   // home: MapScreen(),
-  // home: SplashScreen(),
+  home: SplashScreen(),
   // home: MapTest1(),
 ));
