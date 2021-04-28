@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:railway/ui/home_page.dart';
+import 'package:railway/ui/home_screen.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/global_vars.dart';
+import 'package:railway/utils/navigator.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -9,6 +12,9 @@ class Profile extends StatelessWidget {
     return Scaffold(
         backgroundColor: whiteColor,
         appBar: AppBar(
+          leading: IconButton(icon: Icon(Icons.arrow_back),onPressed: (){
+            navigateAndClearStack(context, HomePage(currentIndex: 0,));
+          },),
           title: Text(
             "Welcome ${userName}",
             style: TextStyle(color: primaryAppColor),
@@ -124,7 +130,7 @@ class Profile extends StatelessWidget {
                         leading: Icon(Icons.home, color: blueAppColor),
                         title:
                             Text('Wallet', style: TextStyle(color: blueAppColor)),
-                        subtitle: Text("-----"),
+                        subtitle: Text("${userWallet} L.E"),
                       ),
                       ListTile(
                         leading: Icon(Icons.date_range, color: blueAppColor),

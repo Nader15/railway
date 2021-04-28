@@ -193,7 +193,7 @@ class _TrainTrackingState extends State<TrainTracking> {
 
   @override
   Widget build(BuildContext context) {
-    print("date ${DateTime.now().hour}");
+    print("date ${DateTime.now()}");
     return Scaffold(
         floatingActionButton: FloatingActionButton(
           backgroundColor: blueAppColor,
@@ -280,13 +280,13 @@ class _TrainTrackingState extends State<TrainTracking> {
         markerId: MarkerId(LatLng(30.781681, 30.994857).toString()),
         //_lastMapPosition is any coordinate which should be your default
         //position when map opens up
-        position: DateTime.now().minute == 10
+        position: DateTime.now().hour == 10
             ? LatLng(30.455546, 31.181067)
-            : DateTime.now().minute == 20
+            : DateTime.now().hour == 11
                 ? LatLng(30.781681, 30.994857)
-                : DateTime.now().minute == 30
+                : DateTime.now().hour == 12
                     ? LatLng(30.062382, 31.246582)
-                    : DateTime.now().hour == 40
+                    : DateTime.now().hour == 1
                         ? LatLng(30.009264, 31.208038)
                         : LatLng(26.551354, 31.699072),
         infoWindow: InfoWindow(

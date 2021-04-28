@@ -149,6 +149,7 @@ class _LoginState extends State<Login> {
                                           userName: usersModel.user.name,
                                           userEmail: usersModel.user.email,
                                           userPhone: usersModel.user.phoneNumber,
+                                          userWallet: usersModel.user.wallet,
                                           userJoinedTime: usersModel.token.accessToken.createdAt,
                                         )
                                             .then((value) {
@@ -157,6 +158,7 @@ class _LoginState extends State<Login> {
                                           userName = usersModel.user.name;
                                           userEmail = usersModel.user.email;
                                           userPhone = usersModel.user.phoneNumber;
+                                          userWallet = usersModel.user.wallet;
                                           userJoinedTime = usersModel.token.accessToken.createdAt;
                                           userId = usersModel.user.id;
                                           navigateAndKeepStack(
@@ -197,11 +199,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Text(
-                        "Forget Password? ",
-                        style: TextStyle(color: greyPrimaryColor),
-                      ),
+
                       SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

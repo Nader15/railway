@@ -86,38 +86,46 @@ class AccessToken {
 }
 
 class User {
+  int id;
   String name;
   String email;
-  String phoneNumber;
-  String updatedAt;
+  Null emailVerifiedAt;
+  int wallet;
   String createdAt;
-  int id;
+  String updatedAt;
+  String phoneNumber;
 
   User(
-      {this.name,
+      {this.id,
+        this.name,
         this.email,
-        this.phoneNumber,
-        this.updatedAt,
+        this.emailVerifiedAt,
+        this.wallet,
         this.createdAt,
-        this.id});
+        this.updatedAt,
+        this.phoneNumber});
 
   User.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     name = json['name'];
     email = json['email'];
-    phoneNumber = json['phone_number'];
-    updatedAt = json['updated_at'];
+    emailVerifiedAt = json['email_verified_at'];
+    wallet = json['wallet'];
     createdAt = json['created_at'];
-    id = json['id'];
+    updatedAt = json['updated_at'];
+    phoneNumber = json['phone_number'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
     data['name'] = this.name;
     data['email'] = this.email;
-    data['phone_number'] = this.phoneNumber;
-    data['updated_at'] = this.updatedAt;
+    data['email_verified_at'] = this.emailVerifiedAt;
+    data['wallet'] = this.wallet;
     data['created_at'] = this.createdAt;
-    data['id'] = this.id;
+    data['updated_at'] = this.updatedAt;
+    data['phone_number'] = this.phoneNumber;
     return data;
   }
 }

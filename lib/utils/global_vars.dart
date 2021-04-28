@@ -3,6 +3,7 @@
   String userName ;
   String userEmail ;
   String userPhone ;
+  int userWallet ;
   String userJoinedTime ;
   int userId ;
 

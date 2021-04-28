@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'file:///D:/Nadrinhoo/AndroidStudioProjects/NADER-GITHUB/railway/lib/ui/train_tracking/StationsRoute/data.dart';
+import 'package:railway/ui/train_tracking/StationsRoute/data.dart';
 
 class Constants {
   static Color lightPrimary = Color(0xfff2f3f7);
