@@ -153,7 +153,6 @@ class Api {
       "password": password,
       "password_confirmation": passwordConfirmation,
       "device_name": "Anonymous Device",
-      "admin": "0",
       "phone_number": phone,
     };
     var userToJson = json.encode(data);
@@ -188,7 +187,6 @@ class Api {
       "email": email,
       "password": password,
       "device_name": "device_name",
-      "admin": "1",
     };
     var userToJson = json.encode(data);
     final response = await http.post(
