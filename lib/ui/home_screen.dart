@@ -113,7 +113,7 @@ class OverView extends StatelessWidget {
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
-                image: AssetImage("images/railwaySlider.png"),
+                image: AssetImage("${homeDetails[index].image}"),
                 fit: BoxFit.cover,
               ),
               boxShadow: [BoxShadow(color: Colors.grey, blurRadius: 20.0)]),

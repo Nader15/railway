@@ -124,7 +124,7 @@ class Profile extends StatelessWidget {
                         leading: Icon(Icons.phone, color: blueAppColor),
                         title:
                             Text('Phone', style: TextStyle(color: blueAppColor)),
-                        subtitle: Text('+20-' "${userPhone}"),
+                        subtitle: Text('+2' "${userPhone}"),
                       ),
                       ListTile(
                         leading: Icon(Icons.home, color: blueAppColor),
@@ -136,7 +136,7 @@ class Profile extends StatelessWidget {
                         leading: Icon(Icons.date_range, color: blueAppColor),
                         title: Text('Joined date',
                             style: TextStyle(color: blueAppColor)),
-                        subtitle: Text('${userJoinedTime.split("T")[0]}'),
+                        subtitle: Text('${userJoinedTime}'),
                       ),
                     ],
                   ),

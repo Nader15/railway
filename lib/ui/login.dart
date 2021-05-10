@@ -9,6 +9,7 @@ import 'package:railway/ui/signUp.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/backgrount.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
+import 'package:railway/utils/custom_widgets/custom_snackBar.dart';
 import 'package:railway/utils/global_vars.dart';
 import 'package:railway/utils/navigator.dart';
 
@@ -33,6 +34,7 @@ class _LoginState extends State<Login> {
 
   bool _autoValidate = false;
   final GlobalKey<ScaffoldState> scafoldState = new GlobalKey<ScaffoldState>();
+
 
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
@@ -150,7 +152,7 @@ class _LoginState extends State<Login> {
                                           userEmail: usersModel.user.email,
                                           userPhone: usersModel.user.phoneNumber,
                                           userWallet: usersModel.user.wallet,
-                                          userJoinedTime: usersModel.token.accessToken.createdAt,
+                                          userJoinedTime: usersModel.user.createdAt.split("T")[0],
                                         )
                                             .then((value) {
                                           UserTocken =
@@ -159,27 +161,27 @@ class _LoginState extends State<Login> {
                                           userEmail = usersModel.user.email;
                                           userPhone = usersModel.user.phoneNumber;
                                           userWallet = usersModel.user.wallet;
-                                          userJoinedTime = usersModel.token.accessToken.createdAt;
+                                          userJoinedTime = usersModel.user.createdAt.split("T")[0];
                                           userId = usersModel.user.id;
                                           navigateAndKeepStack(
                                               context, HomePage());
                                           // navigateAndKeepStack(context,Competitions());
                                         });
                                       }
-//talent_id: 46
                                       else {
                                         UserTocken =
                                         "Bearer ${usersModel.token.plainTextToken.split("|")[1]}";
-                                        // userName = usersModel.user.name;
-                                        // userEmail = usersModel.user.email;
-                                        // userPhone = usersModel.user.phoneNumber;
-                                        // userJoinedTime = usersModel.token.accessToken.createdAt;
-                                        // userId = usersModel.user.id;
-                                        navigateAndKeepStack(context, HomePage());
-                                        // navigateAndKeepStack(context,Competitions());
+                                        userName = usersModel.user.name;
+                                        userEmail = usersModel.user.email;
+                                        userPhone = usersModel.user.phoneNumber;
+                                        userWallet = usersModel.user.wallet;
+                                        userJoinedTime = usersModel.user.createdAt.split("T")[0];
+                                        userId = usersModel.user.id;
                                       }
                                     });
-                                  } else {}
+                                  } else {
+                                    // CustomSnackBar(scafoldState, context, "Invalid User Email or password");
+                                  }
                                 });
                               }
                             },

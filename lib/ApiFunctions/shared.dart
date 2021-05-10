@@ -7,7 +7,7 @@ String UserId="UserId";
 String UserName="UserName";
 String UserEmail="UserEmail";
 String UserPhone="phone_number";
-String UserWallet;
+String UserWallet="UserWallet";
 String UserJoinedTime="created_at";
 
 Future<String> getUserTocken(BuildContext context,) async {
@@ -22,6 +22,7 @@ Future<String> getUserTocken(BuildContext context,) async {
   userJoinedTime=prefs.getString(UserJoinedTime);
 
   print("userId  ${userId}");
+  print("userWallet  ${userWallet}");
   print("UserTocken  ${UserTocken}");
   return prefs.getString(UserAuth);
 

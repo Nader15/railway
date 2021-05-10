@@ -52,7 +52,7 @@ class Success {
     baseStation = json['base_station'] != null ? new BaseStation.fromJson(json['base_station']) : null;
     destinationStation = json['destination_station'] != null ? new BaseStation.fromJson(json['destination_station']) : null;
     if (json['stations'] != null) {
-      stations = new List<Null>();
+      stations = new List<StationsModel>();
       json['stations'].forEach((v) { stations.add(new StationsModel.fromJson(v)); });
     }
     if (json['seats'] != null) {

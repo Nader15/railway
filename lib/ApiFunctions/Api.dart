@@ -6,6 +6,7 @@ import 'package:railway/models/stations.dart';
 import 'package:railway/models/tickets.dart';
 import 'package:railway/models/trips_model.dart';
 import 'package:railway/models/users.dart';
+import 'package:railway/ui/SplahScreen.dart';
 import 'package:railway/ui/home_page.dart';
 import 'package:railway/ui/trips.dart';
 import 'package:railway/utils/custom_widgets/custom_snackBar.dart';
@@ -191,17 +192,18 @@ class Api {
     var userToJson = json.encode(data);
     final response = await http.post(
       apiUrl,
-      headers: {"Content-Type": "application/json"},
+      headers: {"Accept": "application/json","Content-Type": "application/json"},
       body: userToJson,
     );
     Map<String, dynamic> dataContent = json.decode(response.body);
     XsProgressHud.hide();
     if (response.statusCode == 200) {
-      print(dataContent.toString());
+      print(json.decode(response.body).toString());
       return UsersModel.fromJson(dataContent);
     } else {
+      print(json.decode(response.body).toString());
       CustomSnackBar(_scaffoldKey, context,
-          json.decode(response.body)['errors'].toString());
+          json.decode(response.body)['message'].toString());
       return false;
     }
   }
@@ -232,6 +234,7 @@ class Api {
       CustomSnackBar(_scaffoldKey, context, "Ticket Created Successfully");
       Future.delayed(Duration(seconds: 3), () {
         navigateAndClearStack(context, HomePage(currentIndex: 2));
+        // navigateAndClearStack(context, SplashScreen());
       });
       print(json.decode(response.body));
       return TripsModel.fromJson(dataContent);

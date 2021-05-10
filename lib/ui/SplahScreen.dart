@@ -28,6 +28,7 @@ class _openState extends State<SplashScreen> {
       getUserTocken(context).then((value) {
 
         print("UserTocken:: ${UserTocken}");
+        // print("UserWallet:: ${UserWallet}");
         if(UserTocken=="null"){
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Second()));
 
