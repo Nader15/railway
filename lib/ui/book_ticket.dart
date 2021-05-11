@@ -178,21 +178,24 @@ class _BookTicketState extends State<BookTicket> {
                                         widget.success.seats[index].id);
                                   }
                                 : () {},
-                            child: Stack(
-                              children: [
-                                SvgPicture.asset(
-                                  "images/seatIcon.svg",
-                                  width: 50,
-                                  color: widget.success.seats[index].status ==
-                                          "available"
-                                      ? greenColor
-                                      : redColor,
-                                ),
-                                Padding(
-                                  padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/20,top: 5),
-                                  child: Text("${widget.success.seats[index].car.level.Class}"),
-                                )
-                              ],
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    "images/seatIcon.svg",
+                                    width: 50,
+                                    color: widget.success.seats[index].status ==
+                                            "available"
+                                        ? greenColor
+                                        : redColor,
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/20,top: 5),
+                                    child: Text("${widget.success.seats[index].car.level.Class}"),
+                                  )
+                                ],
+                              ),
                             )
                             // Container(
                             //   alignment: Alignment.center,
