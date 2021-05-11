@@ -299,7 +299,7 @@ class Api {
     if (!(response.body).toString().contains('errors')) {
 
       CustomSnackBar(_scaffoldKey, context, "${dataContent.toString()}");
-      Navigator.pop(context);
+      // Navigator.pop(context);
       Future.delayed(Duration(seconds: 3), () {
         navigateAndClearStack(context, HomePage(currentIndex: 1));
       });
