@@ -17,6 +17,8 @@ class BookTicket extends StatefulWidget {
 class _BookTicketState extends State<BookTicket> {
   final GlobalKey<ScaffoldState> scafoldState = new GlobalKey<ScaffoldState>();
 
+  final ticketsCounter = List.generate(100, (counter) => ++counter);
+
   counter() {
     int count = 0;
     for (int i = 0; i < widget.success.seats.length; i++) {
@@ -27,9 +29,60 @@ class _BookTicketState extends State<BookTicket> {
     }
     return count;
   }
+// List <Success> classA=<Success>[];
+List <Seats> classACar=<Seats>[];
+List <Seats> classBCar=<Seats>[];
+List <Seats> classCCar=<Seats>[];
+
+
+  classACounter() {
+    List <Seats>count =<Seats>[];
+    for (int i = 0; i < widget.success.seats.length; i++) {
+      if (widget.success.seats[i].car.level.Class == "A") {
+        count.add(widget.success.seats[i]);
+      } else
+        count = count;
+    }
+
+    return classACar.addAll(count);
+  }
+  classBCounter() {
+    List <Seats>count =<Seats>[];
+    for (int i = 0; i < widget.success.seats.length; i++) {
+      if (widget.success.seats[i].car.level.Class == "B") {
+        count.add(widget.success.seats[i]);
+      } else
+        count = count;
+    }
+
+    return classBCar.addAll(count);
+  }
+  classCCounter() {
+    List <Seats>count =<Seats>[];
+    for (int i = 0; i < widget.success.seats.length; i++) {
+      if (widget.success.seats[i].car.level.Class == "C") {
+        count.add(widget.success.seats[i]);
+      } else
+        count = count;
+    }
+
+    return classCCar.addAll(count);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    classACounter();
+    classBCounter();
+    classCCounter();
+  }
 
   @override
   Widget build(BuildContext context) {
+    print("classA ::: ${classACar.length}");
+    print("classB ::: ${classBCar.length}");
+    print("classC ::: ${classCCar.length}");
     return Scaffold(
       backgroundColor: whiteColor,
       key: scafoldState,
@@ -156,11 +209,29 @@ class _BookTicketState extends State<BookTicket> {
                   SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  classACar.length==0?Container(): Card(
+                    margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    color: Color(0xFFEEC800),
+                    elevation: 10,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text("Class A",style: TextStyle(fontSize: 20,color: Color(0xFF7F5A01)),),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  classACar.length==0?Container():Container(
                     width: MediaQuery.of(context).size.width,
                     // height: 50,
                     child: GridView.builder(
-                      itemCount: widget.success.seats.length,
+                      itemCount: classACar.length,
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -171,13 +242,15 @@ class _BookTicketState extends State<BookTicket> {
                       ),
                       itemBuilder: (context, index) {
                         return InkWell(
-                            onTap: widget.success.seats[index].status ==
-                                    "available"
+                            onTap:
+                            classACar[index].status ==
+                                "available"
                                 ? () {
-                                    Api(context).bookTicketApi(scafoldState,
-                                        widget.success.seats[index].id);
-                                  }
-                                : () {},
+                              Api(context).bookTicketApi(scafoldState,
+                                  classACar[index].id);
+                            }
+                                :
+                                () {},
                             child: Container(
                               alignment: Alignment.center,
                               child: Stack(
@@ -185,38 +258,174 @@ class _BookTicketState extends State<BookTicket> {
                                   SvgPicture.asset(
                                     "images/seatIcon.svg",
                                     width: 50,
-                                    color: widget.success.seats[index].status ==
-                                            "available"
+                                    color:
+                                    classACar[index].status ==
+                                        "available"
                                         ? greenColor
-                                        : redColor,
+                                        :
+                                    redColor,
                                   ),
                                   Padding(
-                                    padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/20,top: 5),
-                                    child: Text("${widget.success.seats[index].car.level.Class}"),
+                                    padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/25,top: 5),
+                                    child: Text("${ticketsCounter[index]}"),
+                                    // child: Text("1"),
                                   )
                                 ],
                               ),
                             )
-                            // Container(
-                            //   alignment: Alignment.center,
-                            //   decoration: BoxDecoration(
-                            //     color: widget.success.seats[index].status ==
-                            //             "available"
-                            //         ? greenColor
-                            //         : redColor,
-                            //   ),
-                            //   child: Text(
-                            //     "class ${widget.success.seats[index].car.level.Class}",
-                            //     style: TextStyle(color: whiteColor),
-                            //   ),
-                            // ),
-                            );
+
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  classBCar.length==0?Container(): Card(
+                    margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    color: Colors.brown.shade400,
+                    elevation: 10,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text("Class B",style: TextStyle(fontSize: 20,color: whiteColor),),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  classBCar.length==0?Container():Container(
+                    width: MediaQuery.of(context).size.width,
+                    // height: 50,
+                    child: GridView.builder(
+                      itemCount: classBCar.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        childAspectRatio: 1.5,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
+                      ),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                            onTap:
+                            classBCar[index].status ==
+                                "available"
+                                ? () {
+                              Api(context).bookTicketApi(scafoldState,
+                                  classBCar[index].id);
+                            }
+                                :
+                                () {},
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    "images/seatIcon.svg",
+                                    width: 50,
+                                    color:
+                                    classBCar[index].status ==
+                                        "available"
+                                        ? greenColor
+                                        :
+                                    redColor,
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/25,top: 5),
+                                    child: Text("${ticketsCounter[index]}"),
+                                    // child: Text("1"),
+                                  )
+                                ],
+                              ),
+                            )
+
+                        );
                       },
                     ),
                   ),
                   SizedBox(
                     height: 30,
                   ),
+                  classCCar.length==0?Container():Card(
+                    margin: EdgeInsets.symmetric(vertical: 0, horizontal: 20),
+                    color: Colors.white60,
+                    elevation: 10,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: MediaQuery.of(context).size.width,
+                        child: Text("Class C",style: TextStyle(fontSize: 20,color: Color(0xFF7F5A01)),),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(
+                    height: 20,
+                  ),
+
+                  classCCar.length==0?Container():Container(
+                    width: MediaQuery.of(context).size.width,
+                    // height: 50,
+                    child: GridView.builder(
+                      itemCount: classCCar.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        childAspectRatio: 1.5,
+                        mainAxisSpacing: 5,
+                        crossAxisSpacing: 5,
+                      ),
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                            onTap:
+                            classCCar[index].status ==
+                                "available"
+                                ? () {
+                              Api(context).bookTicketApi(scafoldState,
+                                  classCCar[index].id);
+                            }
+                                :
+                                () {},
+                            child: Container(
+                              alignment: Alignment.center,
+                              child: Stack(
+                                children: [
+                                  SvgPicture.asset(
+                                    "images/seatIcon.svg",
+                                    width: 50,
+                                    color:
+                                    classCCar[index].status ==
+                                        "available"
+                                        ? greenColor
+                                        :
+                                    redColor,
+                                  ),
+                                  Padding(
+                                    padding:  EdgeInsets.only(left: MediaQuery.of(context).size.width/25,top: 5),
+                                    child: Text("${ticketsCounter[index]}"),
+                                    // child: Text("1"),
+                                  )
+                                ],
+                              ),
+                            )
+
+                        );
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
