@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:railway/ApiFunctions/Api.dart';
 import 'package:railway/models/trips_model.dart';
+import 'package:railway/ui/signUp.dart';
+import 'package:railway/ui/train_tracking/StationsRoute/stations_route.dart';
 import 'package:railway/utils/colors_file.dart';
 import 'package:railway/utils/custom_widgets/custom_button.dart';
+import 'package:railway/utils/navigator.dart';
 
 class BookTicket extends StatefulWidget {
   final Success success;
@@ -140,9 +143,29 @@ List <Seats> classCCar=<Seats>[];
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    "- Station :",
-                    style: TextStyle(fontSize: 20, color: blueAppColor),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "- Station :",
+                        style: TextStyle(fontSize: 20, color: blueAppColor),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          navigateAndKeepStack(context, TripStations(success: widget.success));
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                            text: "View Train",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: blackColor,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   SizedBox(
                     height: 20,

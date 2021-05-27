@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:railway/models/trips_model.dart';
 import 'package:railway/ui/train_tracking/StationsRoute/data.dart';
 
 class Constants {
@@ -15,20 +16,18 @@ class Constants {
   );
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: Constants.lightTheme,
-      home: MapContent(),
-    );
-  }
-}
+
 
 ///Change Text, Icon & Image accordingly to get desired result
-class MapContent extends StatelessWidget {
+class TripStations extends StatefulWidget {
+  final Success success;
+
+  const TripStations({Key key, this.success}) : super(key: key);
+  @override
+  _TripStationsState createState() => _TripStationsState();
+}
+
+class _TripStationsState extends State<TripStations> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,7 +43,7 @@ class MapContent extends StatelessWidget {
                   children: <Widget>[
                     ///AppBar Text
                     Text(
-                      "Howrah Station ➞ Aliah University",
+                      "${widget.success.baseStation.name} ➞ ${widget.success.destinationStation.name}",
                       style: TextStyle(
                           fontSize: 22.0, fontWeight: FontWeight.bold),
                     ),
@@ -70,24 +69,27 @@ class MapContent extends StatelessWidget {
                   ///Both data needs to be provided every time. If you don't want to add detail then use single colons('')
                   children: <Widget>[
                     MapTextData(
-                        mainAddress: 'Bally Station',
-                        detailAddress: 'Howrah, West Bengal'),
+                        mainAddress: 'Cairo',
+                        detailAddress: 'Ramses Square , Cairo'),
                     MapTextData(
-                        mainAddress: 'Walk to Bally Halt Bus Stop',
-                        detailAddress: 'Take the stairs to get on the Flyover'),
+                        mainAddress: 'Alex',
+                        detailAddress: 'Alexandria Station'),
                     MapTextData(
-                        mainAddress: 'Bally ➞ Karunamoyee',
-                        detailAddress: 'Get on this bus'),
+                        mainAddress: 'banha',
+                        detailAddress: 'قسم بنها، بنها، القليوبية'),
                     MapTextData(
-                        mainAddress: 'Aliah University',
-                        detailAddress: 'Newtown, Kolkata'),
+                        mainAddress: 'Tanta',
+                        detailAddress: 'طنطا (قسم 2)، طنطا، الغربية'), MapTextData(
+                        mainAddress: 'Damanhour',
+                        detailAddress: 'Damanhour Station'),
                   ],
                   indicators: <Widget>[
                     ///Add Icons here in ascending order
                     Icon(Icons.directions_transit),
-                    Icon(Icons.directions_walk),
-                    Icon(Icons.directions_bus),
-                    Icon(Icons.account_balance),
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_transit),
+                    Icon(Icons.directions_transit),
                   ],
                 ),
               ),
